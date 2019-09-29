@@ -10,6 +10,8 @@ import java.util.Objects;
 @Entity
 public class Recipe {
 
+    //todo exten dateaudit
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -17,7 +19,7 @@ public class Recipe {
     private String description;
     private String imagePath;
     private int stars;
-    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.EAGER, targetEntity = Ingredient.class)
+    @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, fetch = FetchType.LAZY, targetEntity = Ingredient.class)
     @JsonManagedReference
     private List<Ingredient> ingredients = new ArrayList<>();
 
